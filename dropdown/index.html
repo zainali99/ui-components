@@ -26,12 +26,27 @@
     <p>
         As you can see the console log, on choosing any option it dispatch an Event "dropdown.onItemClick"
     </p>
+    <p>
+        We can pass parameters to modify the way the dropdown works:
+
+        <pre language="javascript">
+            <code>
+                var options = {
+                    hideOnClick: true
+                }
+                const dropdown = new Dropdown(options);
+            </code>
+        </pre>
+    </p>
 
 
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const dropdown = new Dropdown();
+        var options = {
+            hideOnClick: true
+        }
+        const dropdown = new Dropdown(options);
         dropdown.render('.dropdown')
     })
 

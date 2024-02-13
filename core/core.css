@@ -6,3 +6,18 @@
     padding: 4px;
     font-size: 80%;
 }
+
+pre::before {
+    content: attr(language);
+    background: #000;
+    font-family: monospace;
+    padding: 0 10px;
+    color: white;
+    height: 20px;
+    display: inline-block;
+    line-height: 20px;
+}
+
+pre {
+    border:2px solid;
+}

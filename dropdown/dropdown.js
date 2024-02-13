@@ -1,8 +1,15 @@
 // Declaration
 class Dropdown {
-    constructor() {
+    constructor(options) {
         this.element = '';
         this.selected_dom = '';
+        this.options = {
+            'hideOnClick': false
+        }
+        if (options && typeof options == 'object' && Object.keys(options).length) {
+            Object.assign(this.options, options)
+        }
+
     }
     
     render(element) {
@@ -34,6 +41,9 @@ class Dropdown {
     }
     onItemClick(opt) {
         console.log(opt)
+        if (this.options.hideOnClick) {
+            this.hide();
+        }
         window.dispatchEvent(new CustomEvent('dropdown.onItemClick', {
             detail: {
                 'element':opt,
