@@ -3,6 +3,7 @@
     max-width: 150px;
     font-family: serif;
     border-radius: 5px;
+    position: relative;
 }
 
 .dropdown .dropdown-selected-option {
@@ -21,12 +22,17 @@
     list-style: none;
     background: #fff;
     margin: 0;
-    border-radius: 3px;
     padding: 0;
     display: none;
 }
 .dropdown ul.show {
+    border-top:0;
     display: block;
+    position: absolute;
+    background: #fff;
+    width: 150px;
+    border: 2px solid;
+    left: -1px;
 }
 
 .dropdown ul li {
