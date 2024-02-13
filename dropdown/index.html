@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown</title>
+    <link rel="stylesheet" href="dropdown.css">
+    <script src="dropdown.js"></script>
+    <link rel="stylesheet" href="../core/core.css">
+</head>
+<body>
+
+    <h1>Example <span class="beta">BETA</span></h1>
+    <div class="dropdown">
+        <div class="dropdown-selected-option">
+            Choose some option 
+        </div>
+        
+        <ul>
+            <li>option 1</li>
+            <li data-value="2">option 2</li>
+            <li>option 3</li>
+            <li>option 4</li>
+        </ul>
+    </div>
+    <p>
+        As you can see the console log, on choosing any option it dispatch an Event "dropdown.onItemClick"
+    </p>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const dropdown = new Dropdown();
+        dropdown.render('.dropdown')
+    })
+
+    window.addEventListener('dropdown.onItemClick', (e) => {
+        console.log(e.detail)
+    })
+
+
+</script>
+
+</body>
+</html>
