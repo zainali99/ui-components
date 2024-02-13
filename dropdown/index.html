@@ -48,10 +48,13 @@
         }
         const dropdown = new Dropdown(options);
         dropdown.render('.dropdown')
+        // for testing...
+        document.dropdown = dropdown;
     })
 
     window.addEventListener('dropdown.onItemClick', (e) => {
         console.log(e.detail)
+        console.log('value of dropdown: ', document.dropdown.value)
     })
 
 

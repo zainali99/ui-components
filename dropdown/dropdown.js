@@ -3,6 +3,7 @@ class Dropdown {
     constructor(options) {
         this.element = '';
         this.selected_dom = '';
+        this.value = '';
         this.options = {
             'hideOnClick': false
         }
@@ -44,6 +45,7 @@ class Dropdown {
         if (this.options.hideOnClick) {
             this.hide();
         }
+        this.value = opt.dataset.value || '';
         window.dispatchEvent(new CustomEvent('dropdown.onItemClick', {
             detail: {
                 'element':opt,
