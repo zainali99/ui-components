@@ -5,14 +5,15 @@ class Dropdown {
         this.selected_dom = '';
         this.value = '';
         this.options = {
-            'hideOnClick': false
+            'hideOnClick': false,
+            'enableSearch': true
         }
         if (options && typeof options == 'object' && Object.keys(options).length) {
             Object.assign(this.options, options)
         }
 
         this.values = {};
-
+        this.element_search='';
     }
     
     render(element) {
@@ -31,8 +32,15 @@ class Dropdown {
         });
 
         this.selected_dom.addEventListener('click', function(){
+            if (vm.options.enableSearch) {
+                vm.element.querySelector('.dropdown-search-wrapper').classList.toggle('show')
+            }
             vm.element.querySelector('ul').classList.toggle('show')
         })
+
+        this.element_search = this.element.querySelector('.dropdown-search-wrapper input');
+        this.element_search.addEventListener('keyup', function(e){ vm.onSearch(e)} )
+
         document.addEventListener('click', function(e) {
             const inside_droddown = e.target.closest('.dropdown');
 
@@ -42,6 +50,24 @@ class Dropdown {
 
 
         })
+    }
+    onSearch(e){
+        const query =(this.element_search) ? this.element_search.value : e.target.value;
+        if (!query) {
+            return;
+        }
+        this.element.querySelectorAll('li').forEach((option) => {
+
+            let value = option.dataset.value || option.innerText;
+            if (value.startsWith(query)) {
+                console.log(value, query)
+                option.classList.add('matching')
+            } else {
+                option.classList.remove('matching')                 
+            }
+        })
+
+
     }
     renderSelectedValue(){
         this.element.querySelectorAll('li').forEach((option) => {

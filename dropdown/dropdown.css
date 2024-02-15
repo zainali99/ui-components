@@ -40,6 +40,8 @@
     left: -1px;
 }
 
+
+
 .dropdown ul li {
     background: #fff;
     padding: 3px;
@@ -57,3 +59,25 @@
 .dropdown ul li:active {
     background: #999;
 }
+.dropdown ul li.matching {
+    color:orange;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.dropdown .dropdown-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.3rem;
+    
+}
+
+.dropdown .dropdown-search-wrapper {
+    padding: 0.2rem;
+    display: none;
+
+}
+.dropdown-search-wrapper.show {
+    display: block;
+    
+}
+
