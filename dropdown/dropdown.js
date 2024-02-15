@@ -11,6 +11,8 @@ class Dropdown {
             Object.assign(this.options, options)
         }
 
+        this.values = {};
+
     }
     
     render(element) {
@@ -21,7 +23,11 @@ class Dropdown {
         let vm = this;
         
         this.element.querySelectorAll('li').forEach((option) => {
+
+
+
             option.addEventListener('click', () => this.onItemClick(option))
+            if (option.dataset.value) this.values[option.dataset.value] = option.innerText;
         });
 
         this.selected_dom.addEventListener('click', function(){
@@ -37,6 +43,26 @@ class Dropdown {
 
         })
     }
+    renderSelectedValue(){
+        this.element.querySelectorAll('li').forEach((option) => {
+            if (option.dataset.value == this.value) {
+                option.classList.add('selected')
+            } else {
+                option.classList.remove('selected')
+            }
+        });
+    }
+    setValue(value) {
+        // validate
+        if (!this.values[value]) {
+            return;
+        }
+
+        this.value = value;
+        this.selected_dom.innerText = this.values[value];
+
+    }
+
     hide(){
         this.element.querySelector('ul').classList.remove('show')
     }
@@ -53,7 +79,7 @@ class Dropdown {
             }
         }))
         this.selected_dom.innerText = opt.innerText
-        
+        this.renderSelectedValue();
     
     }
 
